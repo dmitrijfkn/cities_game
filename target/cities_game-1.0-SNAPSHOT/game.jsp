@@ -35,7 +35,7 @@
 <form action="next" method="get">
     <label>
         <input type="text" name="word" value="<%= word%>">
-    </label>Ваш город на букву <%= cityByBot.getLastLetter()%><br>
+    </label>Вам город на букву <%= cityByBot.getLastLetter()%><br>
     <input type="submit" value="Подтвердить">
 </form>
 

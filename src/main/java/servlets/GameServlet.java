@@ -47,6 +47,7 @@ public class GameServlet extends HttpServlet {
             usedCitiesDBManager.insertUsedCity(userCity.getId());
             lastCityByBot = citiesDBManager.findCityByFirst(userCity.getLastLetter());
             usedCitiesDBManager.insertUsedCity(lastCityByBot.getId());
+            req.setAttribute("word", "");
         }
 
         req.setAttribute("lastCityByBot",lastCityByBot);
