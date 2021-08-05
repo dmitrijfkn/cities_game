@@ -2,13 +2,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Add</title>
+    <title>Cities game</title>
 </head>
 <body>
 <%
     City cityByBot = (City) request.getAttribute("lastCityByBot");
     String warning;
-    String lastCity;
+    String word;
 
     if (request.getAttribute("warning") != null) {
         warning = (String) request.getAttribute("warning");
@@ -16,10 +16,10 @@
         warning = "null";
     }
 
-    if (request.getAttribute("lastCity") != null) {
-        lastCity = (String) request.getAttribute("lastCity");
+    if (request.getAttribute("word") != null) {
+        word = (String) request.getAttribute("word");
     } else {
-        lastCity = "";
+        word = "";
     }
 
 %>
@@ -33,7 +33,7 @@
 <% } %>
 
 <form action="next" method="get">
-    <input type="text" name="word" value="<%= lastCity%>"><br>
+    <input type="text" name="word" value="<%= word%>"><br>
     <input type="submit" value="Подтвердить">
 </form>
 

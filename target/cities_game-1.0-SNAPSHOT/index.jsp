@@ -3,13 +3,20 @@
 <head>
 </head>
 <body>
-<table>
-    <tr>
-        <td><a href="index">Main page</a></td>
-        <td><a href="departmentTable">List of departments</a></td>
-        <td><a href="employeesTable">List of employees</a></td>
-    </tr>
-</table>
-<br>
+<p align="center">
+<form action="begin" method="get">
+    <input type="submit" value="Начать новую игру">
+</form>
+
+<p align="center">
+<form action="next" method="get">
+    <input type="submit" value="Продолжить игру">
+</form>
+
+<p align="center">
+<form action="end" method="post">
+    <input type="submit" value="Просмотр последней игры">
+</form>
+
 </body>
 </html>

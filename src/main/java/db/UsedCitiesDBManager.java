@@ -1,8 +1,12 @@
 package db;
 
+import entities.City;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -52,7 +56,7 @@ public class UsedCitiesDBManager {
         }
     }
 
-    public int lastCityId(){
+    public int lastCityId() {
         ResultSet resultSet;
 
         String sqlQuery = "SELECT city_id FROM used_cities ORDER BY id DESC LIMIT 1";
@@ -71,5 +75,29 @@ public class UsedCitiesDBManager {
         }
     }
 
+    public List<City> getUsedCitiesList() {
+        ResultSet resultSet;
+        ArrayList<City> listOfCity = new ArrayList<>();
+        String sqlQuery = "SELECT city_id FROM used_cities";
+        CitiesDBManager citiesDBManager = new CitiesDBManager();
+
+
+        try (PreparedStatement stmt = MyConnection.getConnection().prepareStatement(sqlQuery, ResultSet.TYPE_SCROLL_SENSITIVE,
+                ResultSet.CONCUR_UPDATABLE)) {
+
+            resultSet = stmt.executeQuery();
+            if (resultSet.next()) {
+                resultSet.beforeFirst();
+                while (resultSet.next()) {
+                    listOfCity.add(citiesDBManager.findCity(resultSet.getInt("city_id")));
+                }
+            }
+            resultSet.close();
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Sql Exception in getUsedCitiesList", e);
+            return listOfCity;
+        }
+        return listOfCity;
+    }
 
 }

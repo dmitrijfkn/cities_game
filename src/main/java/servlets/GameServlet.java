@@ -25,6 +25,8 @@ public class GameServlet extends HttpServlet {
         String word = req.getParameter("word");
         if (word == null) {
             word = "";
+        }else {
+            req.setAttribute("word", word);
         }
 
 
