@@ -27,6 +27,15 @@ public class City {
         this.name = name;
     }
 
+    public char getLastLetter() {
+        for (int i = name.length() - 1; i > 0; i--) {
+            if (name.charAt(i) != 'ь' && name.charAt(i) != 'ы') {
+                return name.charAt(i);
+            }
+        }
+        return 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
