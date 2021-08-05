@@ -15,10 +15,6 @@ import java.util.List;
 public class EndGameServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         UsedCitiesDBManager usedCitiesDBManager = new UsedCitiesDBManager();
         List<City> cityList = usedCitiesDBManager.getUsedCitiesList();

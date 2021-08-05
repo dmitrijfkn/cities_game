@@ -46,10 +46,7 @@ public class UsedCitiesDBManager {
             stmt.setInt(1, id);
             resultSet = stmt.executeQuery();
 
-            if (resultSet.next()) {
-                return true;
-            } else
-                return false;
+            return resultSet.next();
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Sql Exception in isUsed", e);
             return false;
